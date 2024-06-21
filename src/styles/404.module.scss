@@ -1,0 +1,23 @@
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #6C63FF;
+  font-size: 2rem;
+  &_image {
+    width: 50%
+  }
+  &_button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #6C63FF;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+}

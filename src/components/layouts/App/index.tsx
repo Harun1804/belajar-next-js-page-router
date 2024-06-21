@@ -9,7 +9,7 @@ type AppLayoutProps = {
 export default function AppLayout (props: AppLayoutProps) {
     const { children } = props;
     const { pathname } = useRouter();
-    const disableNavbar: string[] = ["/auth/login", "/auth/register"];
+    const disableNavbar: string[] = ["/auth/login", "/auth/register", "/404"];
     return (
         <main>
             { !disableNavbar.includes(pathname) && <Navbar />}
