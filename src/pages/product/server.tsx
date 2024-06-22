@@ -1,18 +1,15 @@
-import styles from "./Product.module.scss"
-import fetcher from "@/config/swr";
-import useSWR from "swr";
+import styles from "@/pages/product/Product.module.scss";
 import {ProductType} from "@/types/product.type";
 
-export default function ProductPage () {
-    const { data, error, isLoading } = useSWR("/api/products",fetcher);
-
+export default function ServerPage(props: { products: ProductType[]}) {
+    const { products} = props;
     return (
         <div className={styles.product}>
             <h1 className={styles.product_title}>Product</h1>
             <div className={styles.product_content}>
-                {!isLoading ? (
+                {products.length > 0 ? (
                     <>
-                        {data.data.map((product: ProductType) => (
+                        {products.map((product: ProductType) => (
                             <div key={product.id} className={styles.product_content_item}>
                                 <div className={styles.product_content_item_image}>
                                     <img src={product.image} alt={product.name}/>
@@ -39,4 +36,15 @@ export default function ProductPage () {
             </div>
         </div>
     );
+}
+
+export async function getServerSideProps() {
+    const res = await fetch("http://localhost:3000/api/products");
+    const response = await res.json();
+
+    return {
+        props: {
+            products: response.data
+        }
+    }
 }
