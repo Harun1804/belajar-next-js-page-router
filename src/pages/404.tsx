@@ -1,7 +1,7 @@
 import styles from "@/styles/404.module.scss"
 import {useRouter} from "next/router";
 
-export default function notFoundPage () {
+export default function NotFoundPage () {
     const { push } = useRouter()
 
     function handleBack() {
